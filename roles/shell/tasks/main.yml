@@ -1,0 +1,16 @@
+#install zsh
+- name: Install zsh
+  ansible.builtin.package:
+    name: zsh
+    state: present
+
+#customize zsh
+- name: get user id 
+  set_fact:
+    the_user: "{{ ansible_user_id }}"
+
+- name: change user shell to zsh 
+  become: yes
+  user:
+    name: "{{ the_user }}"
+    shell: /bin/zsh

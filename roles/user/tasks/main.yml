@@ -1,0 +1,19 @@
+#build user
+- name: get user id 
+  set_fact:
+    the_user: "{{ ansible_user_id }}"
+
+- name: change user shell to zsh 
+  become: yes
+  user:
+    name: "{{ the_user }}"
+    groups: wheel
+    append: yes
+
+- name: user nopasswd and validate
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: '"{{ the_user }}" ALL=(ALL:ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s

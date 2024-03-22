@@ -1,7 +1,9 @@
-#install zsh
+#install packages
 - name: Install zsh
+  become: true
   ansible.builtin.package:
-    name: zsh
+    name: 
+      - zsh
     state: present
 
 #customize zsh

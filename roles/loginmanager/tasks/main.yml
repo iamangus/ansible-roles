@@ -1,0 +1,34 @@
+- name: install packages
+  become: true
+  ansible.builtin.package:
+    name: 
+      - greetd
+      - tuigreet
+    state: present
+
+- name: add greeter user
+  become: yes
+  ansible.builtin.user:
+    name: greeter
+    group: video
+    create_home: false
+
+- name: Copy file with owner and permission, using symbolic representation
+  become: yes
+  ansible.builtin.copy:
+    src: ../files/config.toml
+    dest: /etc/greetd/config.toml
+    owner: root
+    group: root
+    mode: go+r
+
+- name: "Get current systemd default" # noqa: command-instead-of-module
+  ansible.builtin.command: "systemctl get-default"
+  changed_when: false
+  register: systemdefault
+    
+- name: "Set default to graphical target"
+  become: yes
+  ansible.builtin.command: "systemctl set-default graphical.target"
+  when: "'graphical' not in systemdefault.stdout"
+  changed_when: true

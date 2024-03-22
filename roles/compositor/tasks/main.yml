@@ -1,0 +1,21 @@
+# Install packages
+- name: Install desktop packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - hyprland                # compositor
+      - hyprpaper               # wallpaper manager
+      - SwayNotificationCenter  # notification daemon
+      - waybar                  # status bar
+      - vscode
+      - firefox
+      - kitty
+      - pamixer
+      - grimblast
+      - protonup-ng
+      - gh
+    state: present
+
+
+
+

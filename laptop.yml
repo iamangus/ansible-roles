@@ -1,0 +1,9 @@
+# ansible-playbook laptop.yml -i inv.yml -Kk
+- hosts: laptop
+  roles:
+    - hostname
+    - user
+    - packages
+    - shell
+    - loginmanager
+    - compositor

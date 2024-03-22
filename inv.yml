@@ -1,0 +1,4 @@
+laptop:
+  hosts:
+    10.0.1.74:
+      hostname: laptop

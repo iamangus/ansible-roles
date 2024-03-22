@@ -1,0 +1,11 @@
+- name: Install desktop packages
+  become: true
+  ansible.builtin.package:
+    name: 
+      - vim
+      - wget
+      - curl
+      - git
+      - unzip
+      - bind-utils
+    state: present

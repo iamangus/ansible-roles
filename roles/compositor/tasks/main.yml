@@ -5,15 +5,11 @@
     name:
       - hyprland                # compositor
       - hyprpaper               # wallpaper manager
-      - SwayNotificationCenter  # notification daemon
       - waybar                  # status bar
       - vscode
       - firefox
       - kitty
       - pamixer
-      - grimblast
-      - protonup-ng
-      - gh
     state: present
 
 

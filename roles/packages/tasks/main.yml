@@ -7,5 +7,4 @@
       - curl
       - git
       - unzip
-      - bind-utils
     state: present

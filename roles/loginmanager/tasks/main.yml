@@ -3,7 +3,7 @@
   ansible.builtin.package:
     name: 
       - greetd
-      - tuigreet
+      - greetd-tuigreet
     state: present
 
 - name: add greeter user

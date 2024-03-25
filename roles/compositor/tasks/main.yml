@@ -3,15 +3,49 @@
   become: true
   ansible.builtin.package:
     name:
-      - hyprland                # compositor
-      - hyprpaper               # wallpaper manager
-      - waybar                  # status bar
-      - vscode
+      - hyprland    # compositor
+      - hyprpaper   # wallpaper manager
+      - waybar      # status bar
+      - rofi        # launcher
+      - nemo        # file manager
+      - timeshift    # backups
       - firefox
       - kitty
       - pamixer
+      - xwaylandvideobridge
+      # homelab
+      - sshpass
+      - vscode
+      - k9s
+      - helm
+      - terraform
+      - kubectl
+      # gaming
+      - mangohud
+      - steam
+      - xorg-xwayland
     state: present
 
+# Install packages from paru
+- name: Install packages from paru
+  kewlfft.aur.aur:
+    name:
+      - grimblast-git
+      - swaync
+      - protonup-ng-git
+      - webcord-vencord-git
+    use: paru
+    state: present
+  become: yes
+  become_user: aur_builder
 
+# Hyprland Conf
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "~/.config/hypr"
+    state: directory
 
-
+- name: Copy in Hyprland Conf
+  ansible.builtin.copy:
+    src: ../files/{{ hostname }}-hyprland.conf
+    dest: ~/.config/hypr/hyprland.conf

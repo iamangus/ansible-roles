@@ -4,9 +4,13 @@
   ansible.builtin.package:
     name: 
       - zsh
+      - zsh-autosuggestions
+      - zsh-completions
+      - zsh-history-substring-search
+      - zsh-syntax-highlighting
     state: present
 
-#customize zsh
+#set zsh as shell
 - name: get user id 
   set_fact:
     the_user: "{{ ansible_user_id }}"
@@ -16,3 +20,9 @@
   user:
     name: "{{ the_user }}"
     shell: /bin/zsh
+
+# copy in configs
+- name: Copy file with owner and permission, using symbolic representation
+  ansible.builtin.copy:
+    src: ../files/zshrc
+    dest: ~/.zshrc

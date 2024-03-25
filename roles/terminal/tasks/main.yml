@@ -1,0 +1,10 @@
+# Terminal
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "~/.config/kitty"
+    state: directory
+
+- name: Copy in kitty config
+  ansible.builtin.copy:
+    src: ../files/kitty.conf
+    dest: ~/.config/kitty/kitty.conf

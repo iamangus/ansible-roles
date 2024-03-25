@@ -1,0 +1,15 @@
+# Launcher # wofi broken, not using for now
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "~/.config/wofi"
+    state: directory
+
+- name: Copy in wofi config
+  ansible.builtin.copy:
+    src: ../files/wofi-config
+    dest: ~/.config/wofi/config
+
+- name: Copy in wofi styles
+  ansible.builtin.copy:
+    src: ../files/wofi-style.css
+    dest: ~/.config/wofi/style.css

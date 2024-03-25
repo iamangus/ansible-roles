@@ -1,5 +1,5 @@
-# ansible-playbook laptop.yml -i inv.yml -Kk
-- hosts: laptop
+# ansible-playbook desktop.yml -i inv.yml -Kk
+- hosts: desktop
   roles:
     - hostname
     - user

@@ -2,3 +2,8 @@ laptop:
   hosts:
     10.0.1.74:
       hostname: laptop
+
+desktop:
+  hosts:
+    10.0.1.59:
+      hostname: desktop

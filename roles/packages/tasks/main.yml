@@ -1,4 +1,4 @@
-- name: Install desktop packages
+- name: Install packages
   become: true
   ansible.builtin.package:
     name: 
